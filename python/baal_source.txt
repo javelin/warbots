@@ -1,0 +1,42 @@
+// Baal - created Sept. 5, 2002 MJPD
+
+main {
+  aim(53);
+  seek;    
+  if (collision) suicide;
+  if (xpos > 260) speedx(-3);
+  else if (xpos < 40) speedx(3);
+  aim(127);
+  seek;
+  aim(233);
+  seek;
+  if (ypos > 270) speedy(-4);
+  else if (ypos < 30) speedy(4);
+  if (collision) suicide;
+  aim(307);
+  seek;
+}
+
+init {
+  if (xpos > 150) speedx(3);
+  else speedx(-3);
+  if (ypos > 150) speedy(4);
+  else speedy(-4);
+}
+
+seek {
+  if (range & energy > 50) {
+    shield(5);
+    while(range & energy > 10) fire(energy/2);
+  }
+}
+
+suicide {
+  while (!range) {
+    aim(aim + 15);
+    if (!collision) return;
+  }
+  shield(5);
+  while (range) fire(energy/2);
+}
+

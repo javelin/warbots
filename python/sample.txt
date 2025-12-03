@@ -1,0 +1,29 @@
+main {
+  aim(-90);
+  if (collision) {
+    speedx(-speedx);
+    speedy(-speedy);
+  }
+  else if (range) {
+    fire(20);
+    nuke(20);
+  }
+  else if (b > 2) {
+    missile(6);
+  }
+  else {
+    aim(aim + 10);
+    a = a + 2;
+    if (range)
+      missile(10);
+    else
+      movex(2);
+  }
+  fire(50);
+}
+
+init {
+  speedx(5);
+  speedy(5);
+}
+
